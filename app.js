@@ -1,12 +1,12 @@
 (function(){
-  var SocialZooApp = angular.module("SocialZooApp",['ngRoute', 'ngSanitize', 'ngResource', 'oc.lazyLoad']);
+  var SocialZooApp = angular.module("SocialZooApp",['ngRoute', 'ngSanitize', 'oc.lazyLoad']);
 
-  app.config(["$routeProvider", function($routeProvider){
+  SocialZooApp.config(["$routeProvider", function($routeProvider){
     $routeProvider
     .when('/',{
-      templateUrl : 'partials/home/home.html'
+      templateUrl : 'partials/home/home.html',
       controller : "homeCtrl",
-      controllerAs : "storeHome"
+      controllerAs : "storeHome",
       resolve : {
         lazy : ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load({
@@ -22,19 +22,19 @@
     .otherwise({redirectTo : "/"});
   }]);
 
-  app.directive("header",function(){
+  SocialZooApp.directive("header",function(){
     return {
       restrict : 'A',
       templateUrl : 'partials/common/header.html'
     }
   });
-  app.directive('footer', function(){
+  SocialZooApp.directive('footer', function(){
     return {
       restrict :'A',
       templateUrl :'partials/common/footer.html'
     }
   });
-  app.directive('aside', function(){
+  SocialZooApp.directive('aside', function(){
     return {
       restrict :'A',
       templateUrl  :'partials/common/aside.html'
