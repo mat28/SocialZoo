@@ -1,5 +1,5 @@
-angular.module("SocialZooApp", ['ngSanitize']).controller("homeCtrl",["$scope","posts", function ($scope,posts){
-  $scope.posts = posts.get();
-  console.log("coucou");
-  console.log($scope.posts);
+angular.module("SocialZooApp.controllers", ['ngSanitize',"SocialZooApp.services"]).controller("homeCtrl",["$scope","posts", function ($scope,posts){
+  posts.get().then(function(res){
+    $scope.posts = res;
+  });
 }]);

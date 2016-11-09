@@ -1,4 +1,4 @@
-angular.module("SocialZooApp",['ngResource']).factory("posts",function($resource, $q, $http){
+angular.module("SocialZooApp.services",['ngResource']).factory("posts",function($resource, $q, $http){
   return {
     posts : null,
     get(id = null){
@@ -9,9 +9,8 @@ angular.module("SocialZooApp",['ngResource']).factory("posts",function($resource
         deferred.resolve(this.posts);
       }
       else if(!this.posts && id == null){
-        console.log("coucou");
         let Posts = $resource('https://jsonplaceholder.typicode.com/posts');
-        this.posts = Posts.get();
+        this.posts = Posts.query();
         deferred.resolve(this.posts);
       }
       return deferred.promise;
